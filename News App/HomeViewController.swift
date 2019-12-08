@@ -13,18 +13,27 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
 
-    /*
-    // MARK: - Navigation
+        //Load data from server
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        loadNewsData("bbc-news")
+
     }
-    */
+
+    func loadNewsData(_ source: String) {
+        NewsAPIConfig.getNewsItems(source: source)
+            .done { result in
+                for article in result.articles{
+                    print(article.title)
+                }
+                
+                
+            }
+            .ensure(on: .main) {
+
+            }.catch(on: .main) {
+                err in print(err.localizedDescription) }
+    }
+
 
 }
