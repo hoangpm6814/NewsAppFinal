@@ -6,9 +6,20 @@ target 'News App' do
   use_frameworks!
 
   # Pods for News App
+	# Minh Hoang added
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+
+
+	# Van Hiep added
+
+  pod "PromiseKit", "~> 6.8"
+
+
+
+	#Thanh Hang added
+	
 end
 
