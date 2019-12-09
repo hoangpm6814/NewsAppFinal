@@ -108,7 +108,7 @@ enum NewsAPIConfig {
                     seal.reject(DecodingError.dataCorrupted(context))
                 } catch DecodingError.keyNotFound(let key, let context) {
                     seal.reject(DecodingError.keyNotFound(key, context))
-                    
+
                 } catch DecodingError.typeMismatch(let type, let context) {
                     seal.reject(DecodingError.typeMismatch(type, context))
                 } catch DecodingError.valueNotFound(let value, let context) {
@@ -174,20 +174,24 @@ enum NewsAPIConfig {
                 seal.reject(JSONDecodingError.unknownError)
                 return
             }
-            let baseUrlRequest = URLRequest(url: URLDetail, cachePolicy: .returnCacheDataDontLoad)
+            let baseUrlRequest = URLRequest(url: URLDetail, cachePolicy: .reloadIgnoringLocalCacheData)
             let session = URLSession.shared
-
+            print(baseUrlRequest)
             session.dataTask(with: baseUrlRequest) {
                 (data, response, error) in
 
 
                 //Fail with error Case
                 guard error == nil else {
+                    print("Fail with error Case")
+                    print(error!)
                     seal.reject(error!)
                     return
                 }
                 //Fail with data error Case
                 guard let data = data else {
+                    print("Fail with data error Case")
+                    print(error!)
                     seal.reject(error!)
                     return
                 }
