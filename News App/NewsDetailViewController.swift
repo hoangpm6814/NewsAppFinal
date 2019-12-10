@@ -11,19 +11,56 @@ import Firebase
 
 class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     
+    var news: News?
+    
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var newsTitle: UILabel!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var publishedAt: UILabel!
+    @IBOutlet weak var newsDescription: UILabel!
     @IBOutlet weak var newsContentTV: UITextView!
+    
     var scrollView = UIScrollView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+            newsTitle.text = news?.title
+            author.text = news?.author
+            publishedAt.text = news?.publishedAt
+            newsDescription.text = news?.Description
+            newsContentTV.text = news?.content
+        loadImage(news?.urlToImage ?? "")
+        
+        
+
+        // Do any additional setup after loading the view.
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapView))
         tapRecognizer.delegate = self
         view.addGestureRecognizer(tapRecognizer)
         view.addSubview(scrollView)
-        // Do any additional setup after loading the view.
         customMenuSelectedText()
     }
+    
+    func loadImage(_ imageURL: String) {
+        guard let objURL = URL(string: imageURL) else { return }
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: objURL) { (data, response, error) in
+            if error != nil {
+                print("Error")
+            }else{
+                DispatchQueue.main.async {
+                    self.image.image = UIImage(data: data!)
+                }
+            }
+        }
+        dataTask.resume()
+    }
+    
+    @IBAction func readMoreBtnTapped(_ sender: Any) {
+        
+    }
+    
     
     @objc func tapView() {
         scrollView.isHidden = true
