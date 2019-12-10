@@ -92,7 +92,7 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
             let screenWidth = screensize.width
             let screenHeight = screensize.height
             
-            scrollView = UIScrollView(frame: CGRect(x: 8, y: screenHeight*2/3, width: screenWidth, height: screenHeight*1/3))
+            scrollView = UIScrollView(frame: CGRect(x: 0, y: screenHeight*2/3, width: screenWidth, height: screenHeight*1/3))
             scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight)
             scrollView.backgroundColor = UIColor.systemGray5
             
