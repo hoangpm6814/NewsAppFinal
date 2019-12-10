@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		607935C0239E870C0060E751 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607935BF239E870B0060E751 /* NewsDetailViewController.swift */; };
+		60F6FBBD239FBEF600197539 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6FBBC239FBEF600197539 /* SearchViewController.swift */; };
 		9B4BC7D52390DC1B00E48B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D42390DC1B00E48B44 /* AppDelegate.swift */; };
 		9B4BC7D72390DC1B00E48B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D62390DC1B00E48B44 /* SceneDelegate.swift */; };
 		9B4BC7D92390DC1B00E48B44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D82390DC1B00E48B44 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		607935BF239E870B0060E751 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		60F6FBBC239FBEF600197539 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9B4BC7D12390DC1B00E48B44 /* News App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4BC7D42390DC1B00E48B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B4BC7D62390DC1B00E48B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				9B5C339A239B42BB00A4C83E /* NewsClass.swift */,
 				9B5C339C239BAA9D00A4C83E /* NewsSourceClass.swift */,
 				607935BF239E870B0060E751 /* NewsDetailViewController.swift */,
+				60F6FBBC239FBEF600197539 /* SearchViewController.swift */,
 			);
 			path = "News App";
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4BC7D92390DC1B00E48B44 /* ViewController.swift in Sources */,
+				60F6FBBD239FBEF600197539 /* SearchViewController.swift in Sources */,
 				9B4BC7D52390DC1B00E48B44 /* AppDelegate.swift in Sources */,
 				F30ED69123982731004B8172 /* SignUpViewController.swift in Sources */,
 				F30ED6932398275C004B8172 /* LoginViewController.swift in Sources */,

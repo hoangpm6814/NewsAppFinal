@@ -58,25 +58,6 @@ class HomeViewController: UIViewController {
                 err in print(err.localizedDescription)
         }
     }
-    func loadNewsbySearching(with query: String) {
-        NewsAPIConfig.searchNews(query: query)
-            .done { result in
-                for article in result.articles {
-                    print(article.title)
-                    
-                }
-
-
-            }
-            .ensure(on: .main) {
-
-            }.catch(on: .main) {
-                err in print(err.localizedDescription)
-                
-        }
-    }
-
-
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
