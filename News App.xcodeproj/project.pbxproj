@@ -196,6 +196,7 @@
 				9B4BC7CE2390DC1B00E48B44 /* Frameworks */,
 				9B4BC7CF2390DC1B00E48B44 /* Resources */,
 				06AB949F8E7B2C9695A3CA17 /* [CP] Embed Pods Frameworks */,
+				336797652A46ADC9888DEECA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -329,6 +330,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-News App/Pods-News App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		336797652A46ADC9888DEECA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-News App/Pods-News App-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-News App/Pods-News App-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-News App/Pods-News App-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A198143A18A426E05EEE4834 /* [CP] Check Pods Manifest.lock */ = {
