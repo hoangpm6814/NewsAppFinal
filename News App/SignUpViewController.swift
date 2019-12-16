@@ -23,7 +23,12 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
         errorLbl.alpha = 0
     }
-
+    
+    func isCheckedPassword(_ password : String) -> Bool {
+        
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
 
     func validateFields() -> String? {
 
@@ -36,6 +41,14 @@ class SignUpViewController: UIViewController {
             return "Please fill in all data needed."
 
         }
+        // Check if the password is secure
+        let pass = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if isCheckedPassword(pass) == false {
+            // Password isn't secure enough
+            return "Password at least 8 characters, contains a special character and a number."
+        }
+        
         return nil
     }
     func showError(_ message: String) {
@@ -65,7 +78,7 @@ class SignUpViewController: UIViewController {
                 else {
                     let db = Firestore.firestore()
 
-                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname": lastName, "uid": result!.user.uid]) { (error) in
+                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname": lastName, "email": email, "password": password, "uid": result!.user.uid]) { (error) in
 
                         if error != nil {
                             // Show error message
@@ -74,10 +87,11 @@ class SignUpViewController: UIViewController {
                     }
 
                     // Go to the home screen
-                    let loginViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+                    let loginViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! LoginViewController
                     self.navigationController?.pushViewController(loginViewController, animated: true)
 
                 }
             }
         }
     }
+}

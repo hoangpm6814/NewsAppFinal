@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseMLNLTranslate
 
 class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     
