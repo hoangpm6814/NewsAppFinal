@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5AQ-nV-pGW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5AQ-nV-pGW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -277,7 +277,7 @@
         <!--Activity-->
         <scene sceneID="rU4-IM-keD">
             <objects>
-                <viewController id="srs-MM-XFH" sceneMemberID="viewController">
+                <viewController id="srs-MM-XFH" customClass="ActivityViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4w5-xB-urN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,9 +286,17 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Saved" id="w49-gb-48z"/>
+                                    <barButtonItem title="Saved" id="w49-gb-48z">
+                                        <connections>
+                                            <action selector="showSavedNews:" destination="srs-MM-XFH" id="DSK-Iz-vuT"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6Eg-0K-EFG"/>
-                                    <barButtonItem title="Recently" id="uHD-Bo-n1a"/>
+                                    <barButtonItem title="Recently" id="uHD-Bo-n1a">
+                                        <connections>
+                                            <action selector="showRecentlyViewNews:" destination="srs-MM-XFH" id="VIL-ED-zeV"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zJz-2i-wSK"/>
                                     <barButtonItem title="Highlighted" id="hh2-b4-mdp"/>
                                 </items>
@@ -298,7 +306,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="udF-w0-T7Y" detailTextLabel="U4s-yq-koF" style="IBUITableViewCellStyleSubtitle" id="qba-UD-vyw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" textLabel="udF-w0-T7Y" detailTextLabel="U4s-yq-koF" style="IBUITableViewCellStyleSubtitle" id="qba-UD-vyw">
                                         <rect key="frame" x="0.0" y="28" width="374" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qba-UD-vyw" id="E7E-DZ-AbF">
@@ -329,6 +337,9 @@
                         <viewLayoutGuide key="safeArea" id="uWt-9l-t7M"/>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" id="DFA-le-fqo"/>
+                    <connections>
+                        <outlet property="tableView" destination="b00-zY-8yd" id="3Ba-CL-DgT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yX5-DL-0Tl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,7 +442,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Nst-lZ-kVB">
             <objects>
-                <tabBarController id="IZj-0J-w2P" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="IZj-0J-w2P" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u4I-8T-Grj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -466,10 +477,10 @@
             </objects>
             <point key="canvasLocation" x="237.68115942028987" y="-544.41964285714278"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Acti-->
         <scene sceneID="aTT-bV-xpj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nwK-TU-Xy0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nwK-TU-Xy0" customClass="Acti" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="bookmark" catalog="system" id="Kpg-Ku-Gm0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="08S-yY-KYP">

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var newsTable: UITableView!
     var newsArray: [News] = []
     var newsToSend: News?
+    
+    let user = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,9 @@ class HomeViewController: UIViewController {
 
         loadNewsData("bbc-news")
         //loadNewsbySearching(with: "football")
+        
+        
+        
     }
 
     func loadNewsData(_ source: String) {
@@ -74,6 +80,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let user = user {
+            let email = user.email!
+            let db = Firestore.firestore()
+        
+            let newsToFirestore: [String: Any] = [
+                "title": newsArray[indexPath.row].title,
+                "author": newsArray[indexPath.row].author ?? NSNull(),
+                "Description": newsArray[indexPath.row].Description ?? NSNull(),
+                "url": newsArray[indexPath.row].url ?? NSNull(),
+                "urlToImage": newsArray[indexPath.row].urlToImage ?? NSNull(),
+                "publishedAt": newsArray[indexPath.row].publishedAt ?? NSNull(),
+                "content": newsArray[indexPath.row].content ?? NSNull()
+            ]
+            
+            let userDoc = db.collection("users").document(email)
+            userDoc.updateData(["recentlyView": FieldValue.arrayUnion([newsToFirestore])
+            ])
+        }
            newsToSend = newsArray[indexPath.row]
            tableView.deselectRow(at: indexPath, animated: true)
            performSegue(withIdentifier: "showNewsDetail", sender: self)
