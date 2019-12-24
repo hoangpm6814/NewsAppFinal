@@ -18,50 +18,58 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
 
         // Do any additional setup after loading the view.
+        getSavedNews()
+        
+    }
+    
+    func getSavedNews() {
+        guard let user = user else { return }
+        let db = Firestore.firestore()
+        let email = user.email!
+        let userDoc = db.collection("users").document(email)
+        userDoc.getDocument { (document, error) in
+            if let error = error {
+                print("\(error)")
+            } else {
+                guard let data = document?.get("saved"), let jsonData = try? JSONSerialization.data(withJSONObject: data) else { return }
+                let decoder = JSONDecoder()
+                let news = try! decoder.decode([News].self, from: jsonData)
+                self.newsArray = news
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func getRecentlyViewNews() {
+        guard let user = user else { return }
+        let db = Firestore.firestore()
+        let email = user.email!
+        let userDoc = db.collection("users").document(email)
+        userDoc.getDocument { (document, error) in
+            if let error = error {
+                print("\(error)")
+            } else {
+                guard let data = document?.get("recentlyView"), let jsonData = try? JSONSerialization.data(withJSONObject: data) else { return }
+                let decoder = JSONDecoder()
+                let news = try! decoder.decode([News].self, from: jsonData)
+                self.newsArray = news
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func showSavedNews(_ sender: UIBarButtonItem) {
         
+        getSavedNews()
     }
     
     @IBAction func showRecentlyViewNews(_ sender: UIBarButtonItem) {
-//        guard let user = user else { return }
-//        let db = Firestore.firestore()
-//        let email = user.email!
-//        let userDoc = db.collection("users").document(email)
-//        userDoc.getDocument { (document, error) in
-////            let result = Result {
-////                try document?.get("recentlyView").flatMap {
-////                    try $0.data(as: News.self)
-////                }
-////            }
-////            switch result {
-////            case .success(let city):
-////                if let city = city {
-////                    print("City: \(city)")
-////                } else {
-////                    print("Document does not exist")
-////                }
-////            case .failure(let error):
-////                print("Error decoding city: \(error)")
-////            }
-//
-//            if let error = error {
-//                print("\(error)")
-//            } else {
-//                guard let data = document?.get("recentlyView"), var jsonData = try? JSONSerialization.data(withJSONObject: data) else { return }
-//
-//
-//                //let jsonData = data.data(using: String.Encoding.utf8)!
-//                let decoder = JSONDecoder()
-//                let news = try! decoder.decode([News].self, from: jsonData)
-//                print(news[0])
-//                self.newsArray = news
-//                self.tableView.reloadData()
-//            }
-//        }
+        getRecentlyViewNews()
+        
     }
     /*
     // MARK: - Navigation

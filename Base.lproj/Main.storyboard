@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5AQ-nV-pGW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IZj-0J-w2P">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -267,7 +267,7 @@
                     <connections>
                         <outlet property="searchResultTable" destination="FQe-m9-7RV" id="bh7-da-I2V"/>
                         <outlet property="searchTF" destination="qxi-A7-vmd" id="Vc0-yl-Va2"/>
-                        <segue destination="QOh-bE-wMr" kind="show" identifier="showNewsDetail" id="71A-SH-FvN"/>
+                        <segue destination="QOh-bE-wMr" kind="presentation" identifier="showNewsDetail" id="71A-SH-FvN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ha-bQ-veR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -432,7 +432,7 @@
                     <navigationItem key="navigationItem" title="Daily Read" id="LH7-lJ-qB8"/>
                     <connections>
                         <outlet property="newsTable" destination="q3j-MK-k4r" id="BdF-do-Msp"/>
-                        <segue destination="QOh-bE-wMr" kind="show" identifier="showNewsDetail" id="fnX-MU-cBy"/>
+                        <segue destination="QOh-bE-wMr" kind="presentation" identifier="showNewsDetail" id="fnX-MU-cBy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Enx-uD-jWJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -577,19 +577,9 @@
             <objects>
                 <viewController id="QOh-bE-wMr" customClass="NewsDetailViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RRI-qi-5IP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJY-Mw-Zmh">
-                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Item" image="bookmark" catalog="system" id="USe-WP-Lsx"/>
-                                    <barButtonItem image="arrowshape.turn.up.right" catalog="system" id="EPL-0k-aGQ"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hcK-4y-46F"/>
-                                    <barButtonItem image="textformat.size" catalog="system" style="plain" id="p8q-8X-UCi"/>
-                                </items>
-                            </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-tS-Qvo">
                                 <rect key="frame" x="0.0" y="88" width="414" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -638,6 +628,20 @@
                                     <action selector="readMoreBtnTapped:" destination="QOh-bE-wMr" eventType="touchUpInside" id="SBH-1e-pen"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJY-Mw-Zmh">
+                                <rect key="frame" x="0.0" y="759" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="save" image="bookmark" catalog="system" id="USe-WP-Lsx">
+                                        <connections>
+                                            <action selector="saveNewsBtnTapped:" destination="QOh-bE-wMr" id="K8m-5n-M7y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="arrowshape.turn.up.right" catalog="system" id="EPL-0k-aGQ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hcK-4y-46F"/>
+                                    <barButtonItem image="textformat.size" catalog="system" style="plain" id="p8q-8X-UCi"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="HG6-Ww-LwH"/>
@@ -669,6 +673,6 @@
         <image name="textformat.size" catalog="system" width="64" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fnX-MU-cBy"/>
+        <segue reference="71A-SH-FvN"/>
     </inferredMetricsTieBreakers>
 </document>

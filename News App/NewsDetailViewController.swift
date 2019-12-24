@@ -12,6 +12,7 @@ import FirebaseMLNLTranslate
 
 class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     
+    let user = Auth.auth().currentUser
     var news: News?
     
     @IBOutlet weak var image: UIImageView!
@@ -56,6 +57,27 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
             }
         }
         dataTask.resume()
+    }
+    
+    @IBAction func saveNewsBtnTapped(_ sender: Any) {
+        if let user = user {
+                   let email = user.email!
+                   let db = Firestore.firestore()
+               
+                   let newsToFirestore: [String: Any] = [
+                    "title": news?.title ?? "",
+                       "author": news?.author ?? NSNull(),
+                       "Description": news?.Description ?? NSNull(),
+                       "url": news?.url ?? NSNull(),
+                       "urlToImage": news?.urlToImage ?? NSNull(),
+                       "publishedAt": news?.publishedAt ?? NSNull(),
+                       "content": news?.content ?? NSNull()
+                   ]
+                   
+                   let userDoc = db.collection("users").document(email)
+                   userDoc.updateData(["saved": FieldValue.arrayUnion([newsToFirestore])
+                   ])
+               }
     }
     
     @IBAction func readMoreBtnTapped(_ sender: Any) {
