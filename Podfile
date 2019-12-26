@@ -11,6 +11,8 @@ target 'News App' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
 
 	# Van Hiep added

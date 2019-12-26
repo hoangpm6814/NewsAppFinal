@@ -11,9 +11,10 @@ import Firebase
 import FirebaseAuth
 
 class UserInfoViewController: UIViewController {
-    @IBOutlet weak var userFirstName: UITextField!
-    @IBOutlet weak var userLastName: UITextField!
-    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userFirstName: UILabel!
+    @IBOutlet weak var userLastName: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
+    
     
     
     let user = Auth.auth().currentUser
