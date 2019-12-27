@@ -739,7 +739,11 @@
                                             <action selector="saveNewsBtnTapped:" destination="QOh-bE-wMr" id="K8m-5n-M7y"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="arrowshape.turn.up.right" catalog="system" id="EPL-0k-aGQ"/>
+                                    <barButtonItem image="arrowshape.turn.up.right" catalog="system" id="EPL-0k-aGQ">
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="QOh-bE-wMr" id="Ryv-Kl-g5e"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hcK-4y-46F"/>
                                     <barButtonItem image="textformat.size" catalog="system" style="plain" id="p8q-8X-UCi"/>
                                 </items>
@@ -758,6 +762,7 @@
                         <outlet property="newsDescription" destination="3bh-Ii-njv" id="t3q-hK-dtU"/>
                         <outlet property="newsTitle" destination="bAZ-in-ogn" id="zW4-H2-y65"/>
                         <outlet property="publishedAt" destination="BgS-BX-1bw" id="XHd-u5-QTN"/>
+                        <outlet property="shareButton" destination="EPL-0k-aGQ" id="edR-UI-fzR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mr9-LD-uFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

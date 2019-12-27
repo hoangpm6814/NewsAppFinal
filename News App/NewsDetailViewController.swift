@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseMLNLTranslate
+import Social
 
 class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     
@@ -21,6 +22,7 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
     @IBOutlet weak var publishedAt: UILabel!
     @IBOutlet weak var newsDescription: UILabel!
     @IBOutlet weak var newsContentTV: UITextView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var scrollView = UIScrollView()
     
@@ -157,15 +159,61 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
         }
     }
     
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        //Alert
+        let alert = UIAlertController(title: "Share", message: "Share the news to the world!", preferredStyle: .actionSheet)
+        
+        //First action
+        let actionOne = UIAlertAction(title: "Share on Facebook", style: .default) { (action) in
+            //Checking if user is connected to Facebook
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook)
+            {
+                let post = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
+                
+                post.setInitialText("Test share function")
+                let url = URL(string: self.news!.url!)
+                post.add(url)
+                
+                self.present(post, animated: true, completion: nil)
+                
+            } else {self.showAlert(service: "Facebook")}
+        }
+        
+        //Second action
+        let actionTwo = UIAlertAction(title: "Share on Twitter", style: .default) { (action) in
+            //Checking if user is connected to Facebook
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)
+            {
+                let post = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
+                
+                post.setInitialText("Test share function")
+                let url = URL(string: self.news!.url!)
+                post.add(url)
+                // post.add(UIImage(named: "img.png"))
+                
+                self.present(post, animated: true, completion: nil)
+                
+            } else {self.showAlert(service: "Twitter")}
+        }
+        
+        let actionThree = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        //Add action to action sheet
+        alert.addAction(actionOne)
+        alert.addAction(actionTwo)
+        alert.addAction(actionThree)
+        
+        //Present alert
+        self.present(alert, animated: true, completion: nil)
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func showAlert(service:String)
+    {
+        let alert = UIAlertController(title: "Error", message: "You are not connected to \(service)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
     
 }
