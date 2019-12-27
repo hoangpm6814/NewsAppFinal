@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bi8-Ua-Foa">
-                                <rect key="frame" x="40" y="84" width="334" height="340"/>
+                                <rect key="frame" x="40" y="342" width="334" height="340"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nRl-Kg-bfh">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -198,12 +198,23 @@
                                     <constraint firstItem="q9G-08-W2d" firstAttribute="height" secondItem="nRl-Kg-bfh" secondAttribute="height" id="joE-Iu-2Dl"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SIGN UP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUK-sl-giu">
+                                <rect key="frame" x="143" y="96" width="129" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="32"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="B9c-Cf-BNf">
+                                <rect key="frame" x="80" y="143" width="254" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="sKD-Qx-h72" firstAttribute="bottom" secondItem="bi8-Ua-Foa" secondAttribute="bottom" constant="180" id="2iH-7v-xbZ"/>
                             <constraint firstItem="sKD-Qx-h72" firstAttribute="trailing" secondItem="bi8-Ua-Foa" secondAttribute="trailing" constant="40" id="NG8-xl-l0p"/>
                             <constraint firstItem="bi8-Ua-Foa" firstAttribute="leading" secondItem="sKD-Qx-h72" secondAttribute="leading" constant="40" id="VGp-4w-rkQ"/>
-                            <constraint firstItem="bi8-Ua-Foa" firstAttribute="top" secondItem="sKD-Qx-h72" secondAttribute="top" constant="40" id="vDe-qY-JK8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sKD-Qx-h72"/>
                     </view>
@@ -214,11 +225,12 @@
                         <outlet property="firstNameTF" destination="nRl-Kg-bfh" id="cFC-Xq-1MY"/>
                         <outlet property="lastNameTF" destination="Zlz-gC-BC4" id="dHs-5X-ayC"/>
                         <outlet property="passwordTF" destination="U4q-Xx-6TP" id="6EJ-rI-fOZ"/>
+                        <outlet property="profileImageView" destination="B9c-Cf-BNf" id="yry-CN-Yps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5t9-Dz-J1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="-756"/>
+            <point key="canvasLocation" x="1757.9710144927537" y="-756.02678571428567"/>
         </scene>
         <!--Search-->
         <scene sceneID="ChT-en-S7G">
@@ -438,6 +450,7 @@
                     <connections>
                         <outlet property="userEmail" destination="oxD-Av-T0Q" id="Lgk-cT-jil"/>
                         <outlet property="userFirstName" destination="19r-l0-mLD" id="R9b-Vn-Y9q"/>
+                        <outlet property="userImage" destination="6bJ-bq-elF" id="STH-LT-F34"/>
                         <outlet property="userLastName" destination="gbj-Yg-VnU" id="G4J-9E-yi5"/>
                     </connections>
                 </viewController>
@@ -753,6 +766,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add-image" width="904" height="634"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="64" height="52"/>
         <image name="bell" catalog="system" width="64" height="62"/>
         <image name="bookmark" catalog="system" width="56" height="64"/>

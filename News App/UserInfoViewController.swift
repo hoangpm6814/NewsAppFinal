@@ -14,6 +14,7 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var userFirstName: UILabel!
     @IBOutlet weak var userLastName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     
     
     
@@ -24,7 +25,6 @@ class UserInfoViewController: UIViewController {
         let db = Firestore.firestore()
         let email = user.email!
         let userDoc = db.collection("users").document(email)
-        print(userDoc)
         userDoc.getDocument { (document, error) in
             if let error = error {
                 print("\(error)")
@@ -35,6 +35,9 @@ class UserInfoViewController: UIViewController {
                 self.userLastName.text = lastName as? String
                 guard let email = document?.get("email") else { return }
                 self.userEmail.text = email as? String
+                guard let imageURL = document?.get("photoURL") else { return }
+                self.userImage.image = UIImage(named: "news-detail-image")
+                
             }
         }
     }

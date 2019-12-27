@@ -10,19 +10,76 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var firstNameTF: UITextField!
     @IBOutlet weak var lastNameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         errorLbl.alpha = 0
+        
+        // Image:
+        
+        // Tap to imageview
+        let tapGestureToImageView = UITapGestureRecognizer(target: self, action: #selector(tapToImageView(sender:)))
+        tapGestureToImageView.numberOfTapsRequired = 1 // So lan cham
+        profileImageView?.isUserInteractionEnabled = true
+        profileImageView?.addGestureRecognizer(tapGestureToImageView)
     }
+    
+    @objc func tapToImageView(sender: UITapGestureRecognizer){
+        print("Tapped!")
+        // Choose an image:
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.sourceType = .photoLibrary;
+        self.present(pickerController, animated: true, completion: nil) // sau khi present ko làm gì ==> completion nil
+    }
+    
+    // After choosing image, got image, to get it, implement this func:
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let chosenImage = info[.editedImage] as! UIImage
+        profileImageView!.image = chosenImage // define image in
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
+
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        storageRef.putData(imageData, metadata: metaData) { metaData, error in
+            if error == nil, metaData != nil {
+
+                storageRef.downloadURL { url, error in
+                    completion(url)
+                    // success!
+                }
+            } else {
+                    // failed
+                    completion(nil)
+            }
+        }
+        
+    }
+    
+    func saveProfile(email:String, profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
+        let db = Firestore.firestore()
+        let userDoc = db.collection("users").document(email)
+        userDoc.updateData(["photoURL": profileImageURL.absoluteString])
+    }
+
     
     func isCheckedPassword(_ password : String) -> Bool {
         
@@ -69,6 +126,7 @@ class SignUpViewController: UIViewController {
             let lastName = lastNameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard let image = profileImageView.image else { return }
             
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -84,21 +142,25 @@ class SignUpViewController: UIViewController {
                             self.showError("Error saving user data")
                         }
                     }
-                    //                    db.collection("users").addDocument(data: ["firstname": firstName, "lastname": lastName, "email": email, "password": password, "uid": result!.user.uid]) { (error) in
-                    //
-                    //                        if error != nil {
-                    //                            // Show error message
-                    //                            self.showError("Error saving user data")
-                    //                        }
-                    //                    }
                     
+                    // 1. Upload the profile image to Firebase Storage
                     
-                    // Go to the home screen
-                    //                    let loginViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! LoginViewController
-                    //                    self.navigationController?.pushViewController(loginViewController, animated: true)
+                    self.uploadProfileImage(image) { url in
+                        if url != nil {
+                            self.saveProfile(email: email, profileImageURL: url!) { success in
+                                if success {
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        } else {
+                            // Error unable to upload profile image
+                        }
+                        
+                    }
+                    
+                    // Go to tabBar
                     let tabBarController: UITabBarController = (self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController)
                     self.navigationController?.pushViewController(tabBarController, animated: true)
-                    
                 }
             }
         }
