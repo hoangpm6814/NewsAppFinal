@@ -20,11 +20,28 @@ class UserInfoViewController: UIViewController {
     
     let user = Auth.auth().currentUser
     
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                self.userImage.image = UIImage(data: data)
+            }
+        }
+    }
+    
     func getUserInfo() {
         guard let user = user else { return }
         let db = Firestore.firestore()
         let email = user.email!
         let userDoc = db.collection("users").document(email)
+        
         userDoc.getDocument { (document, error) in
             if let error = error {
                 print("\(error)")
@@ -36,17 +53,17 @@ class UserInfoViewController: UIViewController {
                 guard let email = document?.get("email") else { return }
                 self.userEmail.text = email as? String
                 guard let imageURL = document?.get("photoURL") else { return }
-                self.userImage.image = UIImage(named: "news-detail-image")
-                
+                let url = URL(string: imageURL as! String)!
+                self.downloadImage(from: url)
             }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getUserInfo()
+        
         navigationItem.title = "User's Infomation"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .done, target: self, action: #selector(signOutButtonTapped))
     }
@@ -64,8 +81,4 @@ class UserInfoViewController: UIViewController {
         }
 
     }
-    
-    
-    
-
 }
