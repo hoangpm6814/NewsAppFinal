@@ -15,6 +15,7 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
     
     let user = Auth.auth().currentUser
     var news: News?
+    var highlight: [Highlight]?
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var newsTitle: UILabel!
@@ -36,7 +37,15 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
             newsContentTV.text = news?.content
         loadImage(news?.urlToImage ?? "")
         
-        
+        if let highlight = highlight {
+            let string = NSMutableAttributedString(attributedString: newsContentTV.attributedText)
+            for i in highlight {
+                let range = NSRange(location: i.range[0], length: i.range[1])
+                let attributes = [NSAttributedString.Key.backgroundColor: UIColor.yellow]
+                string.addAttributes(attributes, range: range)
+            }
+            newsContentTV.attributedText = string
+        }
 
         // Do any additional setup after loading the view.
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapView))
@@ -104,8 +113,36 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
             string.addAttributes(attributes, range: newsContentTV.selectedRange)
             newsContentTV.attributedText = string
             print(selectedText)
+            let location = newsContentTV.offset(from: newsContentTV.beginningOfDocument, to: range.start)
+            let length = newsContentTV.offset(from: range.start, to: range.end)
             //send data to highlight list
             //do something here
+            if let user = user {
+                let email = user.email!
+                let db = Firestore.firestore()
+            
+                let newsToFirestore: [String: Any] = [
+                 "title": news?.title ?? "",
+                    "author": news?.author ?? NSNull(),
+                    "Description": news?.Description ?? NSNull(),
+                    "url": news?.url ?? NSNull(),
+                    "urlToImage": news?.urlToImage ?? NSNull(),
+                    "publishedAt": news?.publishedAt ?? NSNull(),
+                    "content": news?.content ?? NSNull()
+                ]
+                
+                let highlight: [String: Any] = [
+                    "newsURL": news?.url ?? "",
+                    "range": [location, length],
+                    "color": 1
+                ]
+                
+                let userDoc = db.collection("users").document(email)
+                userDoc.updateData(["highlighted.highlightNews": FieldValue.arrayUnion([newsToFirestore])
+                ])
+                userDoc.updateData(["highlighted.highlightContent": FieldValue.arrayUnion([highlight])
+                ])
+            }
         }
     }
     

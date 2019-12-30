@@ -102,7 +102,7 @@ enum NewsAPIConfig {
                 //Success
                 do {
                     let jsonFromData = try JSONDecoder().decode(Articles.self, from: data)
-                    print(jsonFromData)
+                    //print(jsonFromData)
                     seal.fulfill(jsonFromData)
                 } catch DecodingError.dataCorrupted(let context) {
                     seal.reject(DecodingError.dataCorrupted(context))

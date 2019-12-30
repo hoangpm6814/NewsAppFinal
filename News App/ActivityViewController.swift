@@ -13,6 +13,9 @@ class ActivityViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var newsArray: [News] = []
+    var newsToSend: News?
+    var allHighlight : [Highlight]?
+    var highlightToSend : [Highlight]?
     
     let user = Auth.auth().currentUser
     
@@ -23,6 +26,7 @@ class ActivityViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         getSavedNews()
+        getAllHighlightedContent()
         
     }
     
@@ -62,15 +66,52 @@ class ActivityViewController: UIViewController {
         }
     }
     
+    func getHighlightedNews() {
+        guard let user = user else { return }
+        let db = Firestore.firestore()
+        let email = user.email!
+        let userDoc = db.collection("users").document(email)
+        userDoc.getDocument { (document, error) in
+            if let error = error {
+                print("\(error)")
+            } else {
+                guard let data = document?.get("highlighted.highlightNews"), let jsonData = try? JSONSerialization.data(withJSONObject: data) else { return }
+                let decoder = JSONDecoder()
+                let news = try! decoder.decode([News].self, from: jsonData)
+                self.newsArray = news
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func getAllHighlightedContent() {
+        guard let user = user else { return }
+        let db = Firestore.firestore()
+        let email = user.email!
+        let userDoc = db.collection("users").document(email)
+        userDoc.getDocument { (document, error) in
+            if let error = error {
+                print("\(error)")
+            } else {
+                guard let data = document?.get("highlighted.highlightContent"), let jsonData = try? JSONSerialization.data(withJSONObject: data) else { return }
+                let decoder = JSONDecoder()
+                self.allHighlight = try! decoder.decode([Highlight].self, from: jsonData)
+            }
+        }
+    }
+    
     @IBAction func showSavedNews(_ sender: UIBarButtonItem) {
-        
         getSavedNews()
     }
     
     @IBAction func showRecentlyViewNews(_ sender: UIBarButtonItem) {
         getRecentlyViewNews()
-        
     }
+    
+    @IBAction func showHighlightedNews(_ sender: UIBarButtonItem) {
+        getHighlightedNews()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -95,5 +136,18 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = article.title
         cell.detailTextLabel?.text = article.author
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           newsToSend = newsArray[indexPath.row]
+            highlightToSend = allHighlight?.filter {$0.newsURL == newsArray[indexPath.row].url}
+           tableView.deselectRow(at: indexPath, animated: true)
+           performSegue(withIdentifier: "showNewsDetail", sender: self)
+       }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! NewsDetailViewController
+        nextVC.news = newsToSend
+        nextVC.highlight = highlightToSend
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		607935C0239E870C0060E751 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607935BF239E870B0060E751 /* NewsDetailViewController.swift */; };
+		60CEB66823BA3C660022C0B9 /* HighlightClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CEB66723BA3C660022C0B9 /* HighlightClass.swift */; };
 		60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */; };
 		60F6FBBD239FBEF600197539 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6FBBC239FBEF600197539 /* SearchViewController.swift */; };
 		9B4BC7D52390DC1B00E48B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D42390DC1B00E48B44 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		607935BF239E870B0060E751 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		60CEB66723BA3C660022C0B9 /* HighlightClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightClass.swift; sourceTree = "<group>"; };
 		60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		60F6FBBC239FBEF600197539 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9B4BC7D12390DC1B00E48B44 /* News App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				607935BF239E870B0060E751 /* NewsDetailViewController.swift */,
 				60F6FBBC239FBEF600197539 /* SearchViewController.swift */,
 				60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */,
+				60CEB66723BA3C660022C0B9 /* HighlightClass.swift */,
 			);
 			path = "News App";
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */,
 				9BEAC367239A025E0052CCAC /* NewsAPIConfig.swift in Sources */,
 				9B5C339B239B42BB00A4C83E /* NewsClass.swift in Sources */,
+				60CEB66823BA3C660022C0B9 /* HighlightClass.swift in Sources */,
 				9B4BC7D72390DC1B00E48B44 /* SceneDelegate.swift in Sources */,
 				F30ED69523982C79004B8172 /* HomeViewController.swift in Sources */,
 			);

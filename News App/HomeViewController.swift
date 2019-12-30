@@ -35,9 +35,9 @@ class HomeViewController: UIViewController {
     func loadNewsData(_ source: String) {
         NewsAPIConfig.getNewsItems(source: source)
             .done { result in
-                print(result)
+                //print(result)
                 for article in result.articles {
-                    print(article.title)
+                    //print(article.title)
                     self.newsArray.append(article)
                     self.newsTable.reloadData()
                 }
