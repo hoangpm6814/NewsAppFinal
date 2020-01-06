@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>261701463211-38mq2dv76dr38ckosdsdo14anjqng05g.apps.googleusercontent.com</string>
+	<string>204656159394-4jkhp5t0uic2rsjuk101tvmnojrbe3kf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.261701463211-38mq2dv76dr38ckosdsdo14anjqng05g</string>
+	<string>com.googleusercontent.apps.204656159394-4jkhp5t0uic2rsjuk101tvmnojrbe3kf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD1SGbjkPDrzkQ_wsxWywkDGkbvpsMPIfs</string>
+	<string>AIzaSyBQhx8FejToZG-wq00cy6VYIk5UEbJjha0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>261701463211</string>
+	<string>204656159394</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>xxxcodeTeam.News-App</string>
 	<key>PROJECT_ID</key>
-	<string>newsappfinal-d2d75</string>
+	<string>newsappxyx</string>
 	<key>STORAGE_BUCKET</key>
-	<string>newsappfinal-d2d75.appspot.com</string>
+	<string>newsappxyx.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:261701463211:ios:54fb0dbeac4309664b5bee</string>
+	<string>1:204656159394:ios:a379af385a982f170685fb</string>
 	<key>DATABASE_URL</key>
-	<string>https://newsappfinal-d2d75.firebaseio.com</string>
+	<string>https://newsappxyx.firebaseio.com</string>
 </dict>
 </plist>
