@@ -26,6 +26,8 @@
 		F30ED69123982731004B8172 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ED69023982731004B8172 /* SignUpViewController.swift */; };
 		F30ED6932398275C004B8172 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ED6922398275C004B8172 /* LoginViewController.swift */; };
 		F30ED69523982C79004B8172 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ED69423982C79004B8172 /* HomeViewController.swift */; };
+		F3A30B2D23C511B000F71087 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A30B2C23C511B000F71087 /* Theme.swift */; };
+		F3A30B2F23C5126300F71087 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A30B2E23C5126300F71087 /* ThemeManager.swift */; };
 		F3B51B6B23B3E9DC008B1B23 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B51B6A23B3E9DB008B1B23 /* UserInfoViewController.swift */; };
 		F3E265152398BD0F007E59CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3E265142398BD0F007E59CF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		F30ED69023982731004B8172 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F30ED6922398275C004B8172 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F30ED69423982C79004B8172 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3A30B2C23C511B000F71087 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F3A30B2E23C5126300F71087 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		F3B51B6A23B3E9DB008B1B23 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		F3E265142398BD0F007E59CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +157,7 @@
 		9B4BC7D32390DC1B00E48B44 /* News App */ = {
 			isa = PBXGroup;
 			children = (
+				F3A30B2B23C5118700F71087 /* Theme */,
 				9B5C3399239B152200A4C83E /* Network */,
 				9B4BC7D82390DC1B00E48B44 /* ViewController.swift */,
 				F30ED69023982731004B8172 /* SignUpViewController.swift */,
@@ -194,6 +199,15 @@
 				9BEAC366239A025E0052CCAC /* NewsAPIConfig.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F3A30B2B23C5118700F71087 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				F3A30B2C23C511B000F71087 /* Theme.swift */,
+				F3A30B2E23C5126300F71087 /* ThemeManager.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,7 +415,9 @@
 				60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */,
 				9BEAC367239A025E0052CCAC /* NewsAPIConfig.swift in Sources */,
 				9B5C339B239B42BB00A4C83E /* NewsClass.swift in Sources */,
+				F3A30B2F23C5126300F71087 /* ThemeManager.swift in Sources */,
 				60CEB66823BA3C660022C0B9 /* HighlightClass.swift in Sources */,
+				F3A30B2D23C511B000F71087 /* Theme.swift in Sources */,
 				9B4BC7D72390DC1B00E48B44 /* SceneDelegate.swift in Sources */,
 				F30ED69523982C79004B8172 /* HomeViewController.swift in Sources */,
 			);
