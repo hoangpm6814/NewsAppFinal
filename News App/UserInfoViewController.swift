@@ -100,30 +100,48 @@ class UserInfoViewController: UIViewController {
     }
     
     @objc func darkModeAction(_ toggle: UISwitch) {
-        if toggle.isOn {
-            view.backgroundColor = .black
-            darkModeLabel.textColor = .white
-            userFirstName.textColor = .white
-            userLastName.textColor = .white
-            userEmail.textColor = .white
-            darkModeLabel.textColor = .white
-            
-            navigationController?.navigationBar.barTintColor = .black
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            tabBarController?.tabBar.barTintColor = .black
-        } else {
-            view.backgroundColor = .white
-            darkModeLabel.textColor = .black
-            userFirstName.textColor = .black
-            userLastName.textColor = .black
-            userEmail.textColor = .black
-            darkModeLabel.textColor = .black
-            
-            navigationController?.navigationBar.barTintColor = .white
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            tabBarController?.tabBar.barTintColor = .white
-        }
+//        if toggle.isOn {
+//            view.backgroundColor = .black
+//            darkModeLabel.textColor = .white
+//            userFirstName.textColor = .white
+//            userLastName.textColor = .white
+//            userEmail.textColor = .white
+//            darkModeLabel.textColor = .white
+//
+//            navigationController?.navigationBar.barTintColor = .black
+//            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//            tabBarController?.tabBar.barTintColor = .black
+//        } else {
+//            view.backgroundColor = .white
+//            darkModeLabel.textColor = .black
+//            userFirstName.textColor = .black
+//            userLastName.textColor = .black
+//            userEmail.textColor = .black
+//            darkModeLabel.textColor = .black
+//
+//            navigationController?.navigationBar.barTintColor = .white
+//            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//            tabBarController?.tabBar.barTintColor = .white
+//        }
         
+        
+//        let name = Notification.Name("darkModeHasChanged")
+//        NotificationCenter.default.post(name: name, object: nil)
+//        UserDefaults.standard.set(toggle.isOn, forKey: "isDarkMode")
+        toggle.isOn ? ThemeManager.enableDarkMode() : ThemeManager.disableDarkMode()
+        
+        let currentTheme = ThemeManager.currentTheme
+        view.backgroundColor = currentTheme.backgroundColor
+        darkModeLabel.textColor = currentTheme.textColor
+        userFirstName.textColor = currentTheme.textColor
+        userLastName.textColor = currentTheme.textColor
+        userEmail.textColor = currentTheme.textColor
+        darkModeLabel.textColor = currentTheme.textColor
+
+        navigationController?.navigationBar.barTintColor = currentTheme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: currentTheme.textColor]
+        tabBarController?.tabBar.barTintColor = currentTheme.backgroundColor
     }
     
 }
+

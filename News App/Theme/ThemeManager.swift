@@ -19,13 +19,20 @@ struct ThemeManager {
         return UserDefaults.standard.bool(forKey: isDarkModeKey)
     }
     
-//    static func enableDarkMode() {
-//        UserDefaults.standard.set(true, forKey: isDarkModeKey)
-//        NotificationCenter.default.post(name: .darkModeHasChanged, object: nil)
-//    }
-//    
-//    static func disableDarkMode() {
-//        UserDefaults.standard.set(false, forKey: isDarkModeKey)
-//        NotificationCenter.default.post(name: .darkModeHasChanged, object: nil)
-//    }
+    static func enableDarkMode() {
+        UserDefaults.standard.set(true, forKey: isDarkModeKey)
+        NotificationCenter.default.post(name: .darkModeHasChanged, object: nil)
+    }
+    
+    static func disableDarkMode() {
+        UserDefaults.standard.set(false, forKey: isDarkModeKey)
+        NotificationCenter.default.post(name: .darkModeHasChanged, object: nil)
+    }
+    static func addDarkModeObserver(to observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: .darkModeHasChanged, object: nil)
+    }
+}
+
+extension Notification.Name {
+    static let darkModeHasChanged = Notification.Name("darkModeHasChanged")
 }

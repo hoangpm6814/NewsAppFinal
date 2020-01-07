@@ -27,9 +27,22 @@ class HomeViewController: UIViewController {
 
         loadNewsData("bbc-news")
         //loadNewsbySearching(with: "football")
+        setUpView()
         
         
-        
+    }
+    
+    func setUpView() {
+        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkmode))
+    }
+    
+    @objc func enableDarkmode() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let theme = isDarkMode ? Theme.dark : Theme.light
+        view.backgroundColor = theme.backgroundColor
+        newsTable.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.barTintColor = theme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]
     }
 
     func loadNewsData(_ source: String) {
@@ -76,9 +89,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let article = newsArray[indexPath.row]
             cell.textLabel?.text = article.title
             cell.detailTextLabel?.text = article.author
+            
+//            let theme = Theme.dark
+//            cell.backgroundColor = theme.backgroundColor
+//            cell.textLabel?.textColor = theme.textColor
+            /////
+//            let name = Notification.Name("darkModeHasChanged")
+//            NotificationCenter.default.addObserver(self, selector: #selector(enableDarkmode2), name: name, object: nil)
             return cell
         }
-    
+       //////
+//    @objc func enableDarkmode2() {
+//        let theme = Theme.dark
+//
+//        backgroundColor = theme.backgroundColor
+//        textLabel?.textColor = theme.textColor
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let user = user {
             let email = user.email!
