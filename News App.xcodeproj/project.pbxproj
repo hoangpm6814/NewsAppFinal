@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		607935C0239E870C0060E751 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607935BF239E870B0060E751 /* NewsDetailViewController.swift */; };
+		60AC8BE523C5C5B700EF459E /* YandexTranslateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC8BE423C5C5B700EF459E /* YandexTranslateConfig.swift */; };
 		60CEB66823BA3C660022C0B9 /* HighlightClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CEB66723BA3C660022C0B9 /* HighlightClass.swift */; };
 		60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */; };
 		60F6FBBD239FBEF600197539 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6FBBC239FBEF600197539 /* SearchViewController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		607935BF239E870B0060E751 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		60AC8BE423C5C5B700EF459E /* YandexTranslateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexTranslateConfig.swift; sourceTree = "<group>"; };
 		60CEB66723BA3C660022C0B9 /* HighlightClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightClass.swift; sourceTree = "<group>"; };
 		60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		60F6FBBC239FBEF600197539 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				9BEAC366239A025E0052CCAC /* NewsAPIConfig.swift */,
+				60AC8BE423C5C5B700EF459E /* YandexTranslateConfig.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			files = (
 				9B4BC7D92390DC1B00E48B44 /* ViewController.swift in Sources */,
 				60F6FBBD239FBEF600197539 /* SearchViewController.swift in Sources */,
+				60AC8BE523C5C5B700EF459E /* YandexTranslateConfig.swift in Sources */,
 				9B4BC7D52390DC1B00E48B44 /* AppDelegate.swift in Sources */,
 				F30ED69123982731004B8172 /* SignUpViewController.swift in Sources */,
 				F30ED6932398275C004B8172 /* LoginViewController.swift in Sources */,

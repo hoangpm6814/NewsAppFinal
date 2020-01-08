@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import FirebaseMLNLTranslate
+//import FirebaseMLNLTranslate
 import Social
 
 class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
@@ -176,23 +176,53 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
             scrollView.addSubview(viText)
             self.view.addSubview(scrollView)
             
-            let options = TranslatorOptions(sourceLanguage: .en, targetLanguage: .vi)
-            let englishVietnameseTranslator = NaturalLanguage.naturalLanguage().translator(options: options)
-            let conditions = ModelDownloadConditions(
-                allowsCellularAccess: false,
-                allowsBackgroundDownloading: true
-            )
-            englishVietnameseTranslator.downloadModelIfNeeded(with: conditions) { error in
-                guard error == nil else {return}
-                //Model downloaded successfully. Okay to start translating
+            //MLNL translate
+//            let options = TranslatorOptions(sourceLanguage: .en, targetLanguage: .vi)
+//            let englishVietnameseTranslator = NaturalLanguage.naturalLanguage().translator(options: options)
+//            let conditions = ModelDownloadConditions(
+//                allowsCellularAccess: false,
+//                allowsBackgroundDownloading: true
+//            )
+//            englishVietnameseTranslator.downloadModelIfNeeded(with: conditions) { error in
+//                guard error == nil else {return}
+//                //Model downloaded successfully. Okay to start translating
+//            }
+//            englishVietnameseTranslator.translate(selectedText) { translatedText, error in
+//                guard error == nil, let translatedText = translatedText else {return}
+//                print("update text")
+//                header.text = "Translate Finished"
+//                viText.text = translatedText
+//                viText.sizeToFit()
+//            }
+            
+            
+            //yandex translator
+            let trans = YandexTranslate()
+            let textToTranslate = selectedText
+            if textToTranslate.count != 0 {
+                let dic = ["myData": textToTranslate, "request": "1"]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Request"), object: nil, userInfo: dic)
+            
+                trans.translate(phrase: textToTranslate, toLang: "vi"){
+                    (String) in
+                    // Getting the response from the completion handler into main thread
+                    DispatchQueue.main.async {
+                        let translatedText = String
+                        let dic = ["myData": translatedText, "request": "0"]
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Answer"), object: nil, userInfo: dic)
+
+                       header.text = "Translate Finished"
+                       viText.text = translatedText
+                        viText.sizeToFit()
+                    }
+                }
+
+//            textField.text = ""
+//            self.Send.setImage(UIImage(named: "Mike"), for: .normal)
+//            isRecordingButton = true
             }
-            englishVietnameseTranslator.translate(selectedText) { translatedText, error in
-                guard error == nil, let translatedText = translatedText else {return}
-                print("update text")
-                header.text = "Translate Finished"
-                viText.text = translatedText
-                viText.sizeToFit()
-            }
+            
+            
         }
     }
     

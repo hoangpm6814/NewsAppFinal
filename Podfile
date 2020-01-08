@@ -22,7 +22,7 @@ target 'News App' do
 
 
 	#Thanh Hang added
-  pod 'Firebase/MLNLTranslate'
+  #pod 'Firebase/MLNLTranslate'
 	
 end
 
