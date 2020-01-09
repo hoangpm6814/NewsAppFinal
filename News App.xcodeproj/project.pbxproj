@@ -28,6 +28,7 @@
 		F30ED69123982731004B8172 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ED69023982731004B8172 /* SignUpViewController.swift */; };
 		F30ED6932398275C004B8172 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ED6922398275C004B8172 /* LoginViewController.swift */; };
 		F30ED69523982C79004B8172 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ED69423982C79004B8172 /* HomeViewController.swift */; };
+		F34D9F3523C77792001E0AB4 /* newsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34D9F3423C77792001E0AB4 /* newsCell.swift */; };
 		F3A30B2D23C511B000F71087 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A30B2C23C511B000F71087 /* Theme.swift */; };
 		F3A30B2F23C5126300F71087 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A30B2E23C5126300F71087 /* ThemeManager.swift */; };
 		F3B51B6B23B3E9DC008B1B23 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B51B6A23B3E9DB008B1B23 /* UserInfoViewController.swift */; };
@@ -81,6 +82,7 @@
 		F30ED69023982731004B8172 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F30ED6922398275C004B8172 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F30ED69423982C79004B8172 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F34D9F3423C77792001E0AB4 /* newsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsCell.swift; sourceTree = "<group>"; };
 		F3A30B2C23C511B000F71087 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F3A30B2E23C5126300F71087 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		F3B51B6A23B3E9DB008B1B23 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				60F6FBBC239FBEF600197539 /* SearchViewController.swift */,
 				60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */,
 				60CEB66723BA3C660022C0B9 /* HighlightClass.swift */,
+				F34D9F3423C77792001E0AB4 /* newsCell.swift */,
 			);
 			path = "News App";
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				F3B51B6B23B3E9DC008B1B23 /* UserInfoViewController.swift in Sources */,
 				9B5C339D239BAA9D00A4C83E /* NewsSourceClass.swift in Sources */,
 				60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */,
+				F34D9F3523C77792001E0AB4 /* newsCell.swift in Sources */,
 				9BEAC367239A025E0052CCAC /* NewsAPIConfig.swift in Sources */,
 				9B5C339B239B42BB00A4C83E /* NewsClass.swift in Sources */,
 				9B37D51723C72E7E00D66053 /* DFSafariViewController.swift in Sources */,
