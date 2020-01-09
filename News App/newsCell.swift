@@ -9,17 +9,6 @@
 import UIKit
 
 class newsCell: UITableViewCell {
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-//
-//        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkmode))
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//
     @objc func enableDarkmode() {
         let theme = ThemeManager.currentTheme
         backgroundColor = theme.backgroundColor

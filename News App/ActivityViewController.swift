@@ -11,6 +11,7 @@ import Firebase
 
 class ActivityViewController: UIViewController {
 
+    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var tableView: UITableView!
     var newsArray: [News] = []
     var newsToSend: News?
@@ -144,7 +145,7 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! newsCell
         let article = newsArray[indexPath.row]
         cell.textLabel?.text = article.title
         cell.detailTextLabel?.text = article.author

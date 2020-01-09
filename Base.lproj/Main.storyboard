@@ -374,7 +374,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" textLabel="udF-w0-T7Y" detailTextLabel="U4s-yq-koF" style="IBUITableViewCellStyleSubtitle" id="qba-UD-vyw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" textLabel="udF-w0-T7Y" detailTextLabel="U4s-yq-koF" style="IBUITableViewCellStyleSubtitle" id="qba-UD-vyw" customClass="newsCell" customModule="News_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qba-UD-vyw" id="E7E-DZ-AbF">
@@ -407,6 +407,7 @@
                     <navigationItem key="navigationItem" title="Activity" id="DFA-le-fqo"/>
                     <connections>
                         <outlet property="tableView" destination="b00-zY-8yd" id="3Ba-CL-DgT"/>
+                        <outlet property="toolBar" destination="PEP-QJ-miU" id="cde-lC-WMz"/>
                         <segue destination="QOh-bE-wMr" kind="presentation" identifier="showNewsDetail" id="NcR-Gv-F8W"/>
                     </connections>
                 </viewController>
@@ -768,7 +769,7 @@
         <image name="textformat.size" catalog="system" width="64" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fnX-MU-cBy"/>
+        <segue reference="NcR-Gv-F8W"/>
         <segue reference="hNm-rb-xGs"/>
         <segue reference="hEX-0S-KHN"/>
     </inferredMetricsTieBreakers>
