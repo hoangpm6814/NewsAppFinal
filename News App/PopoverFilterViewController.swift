@@ -22,7 +22,7 @@ class PopoverFilterViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var tableView: UITableView!
 
-    var names: [String] = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
+    var names: [String] = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

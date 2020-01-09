@@ -768,7 +768,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EsP-WX-aLP">
-                                <rect key="frame" x="0.0" y="141" width="414" height="567"/>
+                                <rect key="frame" x="0.0" y="141" width="414" height="415"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" textLabel="6eP-Bc-nqZ" style="IBUITableViewCellStyleDefault" id="rxQ-8W-IUV">
@@ -781,7 +781,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6eP-Bc-nqZ">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="47.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -796,9 +796,11 @@
                             <constraint firstAttribute="bottom" secondItem="WmR-dT-I3N" secondAttribute="bottom" constant="804" id="11x-wC-ne8"/>
                             <constraint firstItem="WmR-dT-I3N" firstAttribute="top" secondItem="6Ic-Ct-Zte" secondAttribute="top" constant="8" id="9Sm-ab-JXS"/>
                             <constraint firstItem="EsP-WX-aLP" firstAttribute="leading" secondItem="6Ic-Ct-Zte" secondAttribute="leading" id="G8t-Bd-3k5"/>
+                            <constraint firstItem="EsP-WX-aLP" firstAttribute="leading" secondItem="6Ic-Ct-Zte" secondAttribute="leading" id="Hd0-hf-YmY"/>
                             <constraint firstItem="WmR-dT-I3N" firstAttribute="trailing" secondItem="EsP-WX-aLP" secondAttribute="trailing" id="LT1-I0-Qei"/>
+                            <constraint firstItem="EsP-WX-aLP" firstAttribute="trailing" secondItem="6Ic-Ct-Zte" secondAttribute="trailing" id="Vbi-cC-gzC"/>
                             <constraint firstItem="6Ic-Ct-Zte" firstAttribute="trailing" secondItem="EsP-WX-aLP" secondAttribute="trailing" id="aOz-sX-yBu"/>
-                            <constraint firstItem="6Ic-Ct-Zte" firstAttribute="bottom" secondItem="EsP-WX-aLP" secondAttribute="bottom" constant="154" id="hKt-Rf-mzO"/>
+                            <constraint firstItem="6Ic-Ct-Zte" firstAttribute="bottom" secondItem="EsP-WX-aLP" secondAttribute="bottom" constant="306" id="hKt-Rf-mzO"/>
                             <constraint firstItem="WmR-dT-I3N" firstAttribute="leading" secondItem="EsP-WX-aLP" secondAttribute="leading" id="jdh-zE-03g"/>
                             <constraint firstItem="EsP-WX-aLP" firstAttribute="top" secondItem="WmR-dT-I3N" secondAttribute="bottom" constant="49" id="k9o-E8-aqy"/>
                             <constraint firstItem="EsP-WX-aLP" firstAttribute="top" secondItem="6Ic-Ct-Zte" secondAttribute="top" constant="97" id="tWp-Ka-YhT"/>
