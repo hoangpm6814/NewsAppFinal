@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        signUpButton.layer.cornerRadius = 20.0
+        loginButton.layer.cornerRadius = 20.0
+        
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }

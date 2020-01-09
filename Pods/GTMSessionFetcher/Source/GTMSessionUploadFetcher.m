@@ -464,6 +464,14 @@ NSString *const kGTMSessionFetcherUploadLocationObtainedNotification =
   }
 }
 
+- (void)setChunkSize:(int64_t)chunkSize {
+  @synchronized(self) {
+    GTMSessionMonitorSynchronized(self);
+
+    _chunkSize = chunkSize;
+  }
+}
+
 - (int64_t)chunkSize {
   @synchronized(self) {
     GTMSessionMonitorSynchronized(self);

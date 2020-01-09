@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,14 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         // Do any additional setup after loading the view.
         errorLbl.alpha = 0
         
+        
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.black.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
+        
+        signUpButton.layer.cornerRadius = 20.0
         // Image:
         
         // Tap to imageview

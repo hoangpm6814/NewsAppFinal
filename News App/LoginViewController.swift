@@ -13,13 +13,16 @@ import Firebase
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-
     @IBOutlet weak var errorLbl: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         errorLbl.alpha = 0
+        emailTF.layer.cornerRadius = 20.0
+        passwordTF.layer.cornerRadius = 20.0
+        loginButton.layer.cornerRadius = 20.0
     }
 
     @IBAction func LoginButton(_ sender: Any) {
