@@ -70,6 +70,21 @@ class UserInfoViewController: UIViewController {
         setUpDarkModeToggle()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func loadView() {
+        super.loadView()
+        super.viewDidLoad()
+        
+        getUserInfo()
+        
+        navigationItem.title = "User's Infomation"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .done, target: self, action: #selector(signOutButtonTapped))
+        setUpDarkModeToggle()
+    }
+    
 //    func setUpView () {
 //        let name = NotificationCenter.Name("darkModeHasChanged")
 //        NotificationCenter.default.addObserver(self, selector: #selector(enableDarkmode), name: name, object: nil)

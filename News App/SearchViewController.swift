@@ -15,9 +15,24 @@ class SearchViewController: UIViewController {
     var searchResultArr: [News] = []
     var newsToSend: News?
     
-    override func viewDidLoad() {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        searchResultTable.delegate = self
+//        searchResultTable.dataSource = self
+//        searchTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+//        //loadNewsbySearching(with: "football")
+//        // Do any additional setup after loading the view.
+//        setUpView()
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func loadView() {
+        super.loadView()
         super.viewDidLoad()
-        
         searchResultTable.delegate = self
         searchResultTable.dataSource = self
         searchTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

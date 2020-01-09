@@ -17,9 +17,27 @@ class HomeViewController: UIViewController {
     
     let user = Auth.auth().currentUser
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        newsTable.delegate = self
+//        newsTable.dataSource = self
+//
+//        //Load data from server
+//
+//        loadNewsData("bbc-news")
+//        //loadNewsbySearching(with: "football")
+//        setUpView()
+//
+//
+//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+    }
+    
+    override func loadView() {
+        super.loadView()
         newsTable.delegate = self
         newsTable.dataSource = self
 
@@ -28,8 +46,6 @@ class HomeViewController: UIViewController {
         loadNewsData("bbc-news")
         //loadNewsbySearching(with: "football")
         setUpView()
-        
-        
     }
     
     func setUpView() {

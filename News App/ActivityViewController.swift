@@ -20,7 +20,23 @@ class ActivityViewController: UIViewController {
     
     let user = Auth.auth().currentUser
     
-    override func viewDidLoad() {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//
+//        // Do any additional setup after loading the view.
+//        getSavedNews()
+//        getAllHighlightedContent()
+//        setUpView()
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func loadView() {
+        super.loadView()
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,6 +58,7 @@ class ActivityViewController: UIViewController {
         tableView.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.barTintColor = theme.backgroundColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]
+        toolBar.barTintColor = theme.backgroundColor
     }
     
     func getSavedNews() {
