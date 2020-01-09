@@ -9,6 +9,13 @@
 import UIKit
 
 class newsCell: UITableViewCell {
+    
+    @IBOutlet var imageNews: UIImageView!
+    
+    @IBOutlet var titleLabel: UILabel!
+  
+    @IBOutlet var sourceLabel: UILabel!
+    
     @objc func enableDarkmode() {
         let theme = ThemeManager.currentTheme
         backgroundColor = theme.backgroundColor
