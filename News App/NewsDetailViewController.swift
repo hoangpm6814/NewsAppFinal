@@ -26,7 +26,9 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
     @IBOutlet weak var newsContentTV: UITextView!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
-    
+
+//    var FontSize : CGFloat!
+
 
 
     var articleStringURL: String?
@@ -34,9 +36,11 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setUpView()
-        
+
+        Shared.shared.FontSize = 14
+
         newsTitle.text = news?.title
         author.text = news?.author
         publishedAt.text = news?.publishedAt
@@ -45,6 +49,13 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
         articleStringURL = news?.url
 
         loadImage(news?.urlToImage ?? "")
+
+//      MARK:   -CUSTOM FONT SIZE
+        newsTitle.font = newsTitle.font.withSize(Shared.shared.FontSize ?? 17)
+        author.font = author.font.withSize(Shared.shared.FontSize ?? 17)
+
+        newsContentTV.font = newsContentTV.font?.withSize(Shared.shared.FontSize ?? 14)
+
 
         if let highlight = highlight {
             let string = NSMutableAttributedString(attributedString: newsContentTV.attributedText)
@@ -62,13 +73,13 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
         view.addGestureRecognizer(tapRecognizer)
         view.addSubview(scrollView)
         customMenuSelectedText()
-        
+
     }
-    
+
     func setUpView() {
         ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkmode))
     }
-    
+
     @objc func enableDarkmode() {
         let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
         let theme = isDarkMode ? Theme.dark : Theme.light
@@ -124,7 +135,7 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
     func openInSafari() {
         guard let articleString = articleStringURL, let url = URL(string: articleString) else { return }
         let svc = DFSafariViewController(url: url)
-        
+
         //        let config = SFSafariViewController.Configuration()
         //        config.entersReaderIfAvailable = true
         //        let svc = DFSafariViewController(url: url, configuration: config)
@@ -294,14 +305,52 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
         present(alert, animated: true, completion: nil)
     }
 
+
+//   Custom font size by User
+
+
+    @IBAction func customFontSizeTapped(_ sender: Any) {
+
+        let vc = storyboard?.instantiateViewController(withIdentifier: "popoverController")as! PopoverFontSizeViewController
+
+        vc.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        vc.delegate = self
+        
+        let navController = UINavigationController(rootViewController: vc)
+        vc.navigationController?.isNavigationBarHidden = true
+        navController.modalPresentationStyle = UIModalPresentationStyle.popover
+
+        let popover = navController.popoverPresentationController
+        popover?.delegate = self as? UIPopoverPresentationControllerDelegate
+        popover?.barButtonItem = sender as? UIBarButtonItem
+
+
+        self.present(navController, animated: true, completion: nil)
+
+
+    }
+
 }
+
 extension NewsDetailViewController: UIPopoverPresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+}
 
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
+
+
+extension NewsDetailViewController: UpdatingFontSizeDelegate {
+
+    func updateFontSize(_ FontSize: CGFloat) {
+        //      MARK:   -CUSTOM FONT SIZE
+        print(FontSize)
+        self.newsTitle.font = newsTitle.font.withSize(FontSize + 3)
+        self.author.font = author.font.withSize(FontSize + 3)
+
+        self.newsContentTV.font = newsContentTV.font?.withSize(FontSize)
     }
 }
+
+
+
