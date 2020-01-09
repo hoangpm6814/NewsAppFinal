@@ -16,7 +16,9 @@ enum NewsAPIConfig {
     case articles(source: String)
     case sources(category: String?, language: String?, country: String?)
     case search(query: String)
-
+    case articlesbyTopic(category: String?)
+    
+    
     static var baseURL = URLComponents(string: "https://newsapi.org")
     static let APIkey = "0e77d9600fa342989f8eb644e6f4450e"
 
@@ -30,6 +32,18 @@ enum NewsAPIConfig {
         case .articles(let source):
             NewsAPIConfig.baseURL?.path = "/v2/top-headlines"
             NewsAPIConfig.baseURL?.queryItems = [URLQueryItem(name: "sources", value: source), URLQueryItem(name: "apiKey", value: NewsAPIConfig.APIkey)]
+
+            guard let url = NewsAPIConfig.baseURL?.url else {
+                return nil
+            }
+            print(url)
+            return url
+            
+            
+//          https://newsapi.org/v2/top-headlines?country=de&category=business&apiKey=0e77d9600fa342989f8eb644e6f4450e
+        case .articlesbyTopic(let category):
+            NewsAPIConfig.baseURL?.path = "/v2/top-headlines"
+            NewsAPIConfig.baseURL?.queryItems = [URLQueryItem(name: "category", value:  category), URLQueryItem(name: "apiKey", value: NewsAPIConfig.APIkey)]
 
             guard let url = NewsAPIConfig.baseURL?.url else {
                 return nil
@@ -79,6 +93,52 @@ enum NewsAPIConfig {
     static func getNewsItems(source: String) -> Promise<Articles> {
         return Promise { seal in
             guard let URLDetail = NewsAPIConfig.articles(source: source).url else {
+                seal.reject(JSONDecodingError.unknownError)
+                return
+            }
+            let baseUrlRequest = URLRequest(url: URLDetail)
+            let session = URLSession.shared
+
+            session.dataTask(with: baseUrlRequest) {
+                (data, response, error) in
+
+                //Fail with error Case
+                guard error == nil else {
+                    seal.reject(error!)
+                    return
+                }
+                //Fail with data error Case
+                guard let data = data else {
+                    seal.reject(error!)
+                    return
+                }
+
+                //Success
+                do {
+                    let jsonFromData = try JSONDecoder().decode(Articles.self, from: data)
+                    //print(jsonFromData)
+                    seal.fulfill(jsonFromData)
+                } catch DecodingError.dataCorrupted(let context) {
+                    seal.reject(DecodingError.dataCorrupted(context))
+                } catch DecodingError.keyNotFound(let key, let context) {
+                    seal.reject(DecodingError.keyNotFound(key, context))
+
+                } catch DecodingError.typeMismatch(let type, let context) {
+                    seal.reject(DecodingError.typeMismatch(type, context))
+                } catch DecodingError.valueNotFound(let value, let context) {
+                    seal.reject(DecodingError.valueNotFound(value, context))
+                } catch {
+                    seal.reject(JSONDecodingError.unknownError)
+                }
+            }.resume()
+
+        }
+
+    }
+//      MARK: - Get News articles from /top-headline Endpoint by Topic
+    static func getNewsItemsbyTopic(category: String) -> Promise<Articles> {
+        return Promise { seal in
+            guard let URLDetail = NewsAPIConfig.articlesbyTopic(category: category).url else {
                 seal.reject(JSONDecodingError.unknownError)
                 return
             }

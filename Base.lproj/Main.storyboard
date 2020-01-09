@@ -535,7 +535,7 @@
         <!--Daily Read-->
         <scene sceneID="Iig-Se-Mio">
             <objects>
-                <viewController id="qzY-m0-FmH" customClass="HomeViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="qzY-m0-FmH" customClass="HomeViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9iU-cm-Lmy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -608,7 +608,11 @@
                         <viewLayoutGuide key="safeArea" id="T4B-No-mgY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Daily Read" id="LH7-lJ-qB8">
-                        <barButtonItem key="rightBarButtonItem" title="=" image="square.stack.3d.up.fill" catalog="system" style="plain" id="Ofe-iv-ud8"/>
+                        <barButtonItem key="rightBarButtonItem" title="=" image="square.stack.3d.up.fill" catalog="system" style="plain" id="Ofe-iv-ud8">
+                            <connections>
+                                <action selector="filterTapped:" destination="qzY-m0-FmH" id="9D6-k4-fjm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newsTable" destination="q3j-MK-k4r" id="BdF-do-Msp"/>
@@ -731,6 +735,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coT-7K-Lvf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3669.5652173913045" y="-756.02678571428567"/>
+        </scene>
+        <!--Popover Filter View Controller-->
+        <scene sceneID="weM-vh-pn5">
+            <objects>
+                <viewController storyboardIdentifier="PopoverFilterViewController" id="eDr-bv-mxg" customClass="PopoverFilterViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CqB-Wk-qgH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WmR-dT-I3N">
+                                <rect key="frame" x="0.0" y="52" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJq-hS-Wbe">
+                                        <rect key="frame" x="170" y="11.5" width="74" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="74" id="eyR-iY-Zae"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="chevron.down" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePopup:" destination="eDr-bv-mxg" eventType="touchUpInside" id="XDt-94-T32"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="nJq-hS-Wbe" firstAttribute="centerX" secondItem="WmR-dT-I3N" secondAttribute="centerX" id="Dam-QG-Ang"/>
+                                    <constraint firstItem="nJq-hS-Wbe" firstAttribute="centerY" secondItem="WmR-dT-I3N" secondAttribute="centerY" id="dPe-2A-BGC"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EsP-WX-aLP">
+                                <rect key="frame" x="0.0" y="141" width="414" height="567"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" textLabel="6eP-Bc-nqZ" style="IBUITableViewCellStyleDefault" id="rxQ-8W-IUV">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="47.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rxQ-8W-IUV" id="Cot-P8-D1P">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6eP-Bc-nqZ">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="47.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WmR-dT-I3N" secondAttribute="bottom" constant="804" id="11x-wC-ne8"/>
+                            <constraint firstItem="WmR-dT-I3N" firstAttribute="top" secondItem="6Ic-Ct-Zte" secondAttribute="top" constant="8" id="9Sm-ab-JXS"/>
+                            <constraint firstItem="EsP-WX-aLP" firstAttribute="leading" secondItem="6Ic-Ct-Zte" secondAttribute="leading" id="G8t-Bd-3k5"/>
+                            <constraint firstItem="WmR-dT-I3N" firstAttribute="trailing" secondItem="EsP-WX-aLP" secondAttribute="trailing" id="LT1-I0-Qei"/>
+                            <constraint firstItem="6Ic-Ct-Zte" firstAttribute="trailing" secondItem="EsP-WX-aLP" secondAttribute="trailing" id="aOz-sX-yBu"/>
+                            <constraint firstItem="6Ic-Ct-Zte" firstAttribute="bottom" secondItem="EsP-WX-aLP" secondAttribute="bottom" constant="154" id="hKt-Rf-mzO"/>
+                            <constraint firstItem="WmR-dT-I3N" firstAttribute="leading" secondItem="EsP-WX-aLP" secondAttribute="leading" id="jdh-zE-03g"/>
+                            <constraint firstItem="EsP-WX-aLP" firstAttribute="top" secondItem="WmR-dT-I3N" secondAttribute="bottom" constant="49" id="k9o-E8-aqy"/>
+                            <constraint firstItem="EsP-WX-aLP" firstAttribute="top" secondItem="6Ic-Ct-Zte" secondAttribute="top" constant="97" id="tWp-Ka-YhT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Ic-Ct-Zte"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="Popupview" destination="nJq-hS-Wbe" id="KpT-WE-fwq"/>
+                        <outlet property="tableView" destination="EsP-WX-aLP" id="a9w-eI-eI6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hgh-Fu-UMq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4579.7101449275369" y="-2162.9464285714284"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="jV8-op-ET4">
@@ -956,7 +1039,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BE9-gx-CEN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6517.3913043478269" y="-1485.2678571428571"/>
+            <point key="canvasLocation" x="6554" y="-1469"/>
         </scene>
     </scenes>
     <resources>
@@ -966,6 +1049,7 @@
         <image name="back" width="512" height="512"/>
         <image name="bookmark" catalog="system" width="56" height="64"/>
         <image name="broken-1" width="350" height="276"/>
+        <image name="chevron.down" catalog="system" width="64" height="36"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="person" catalog="system" width="64" height="58"/>

@@ -79,12 +79,31 @@ class HomeViewController: UIViewController {
                 err in print(err.localizedDescription) }
     }
 
+    func loadNewsDatabyTopic(_ category: String) {
+        NewsAPIConfig.getNewsItemsbyTopic(category: category)
+            .done { result in
+                //print(result)
+                if(!self.newsArray.isEmpty) {
+                    self.newsArray.removeAll()
+                }
+
+                for article in result.articles {
+                    //print(article.title)
+                    self.newsArray.append(article)
+                    self.newsTable.reloadData()
+                }
+
+
+            }
+            .ensure(on: .main) {
+
+            }.catch(on: .main) {
+                err in print(err.localizedDescription) }
+    }
+
     func loadNewsbyTopic(_ params: SourcesRequestParameters) {
         NewsAPIConfig.getNewsSource(sourceRequestParams: params)
             .done { result in
-
-
-
 
             }
             .ensure(on: .main) {
@@ -93,7 +112,7 @@ class HomeViewController: UIViewController {
                 err in print(err.localizedDescription)
         }
     }
-    func loadImage(_ imgView: UIImageView,_ imageURL: String) {
+    func loadImage(_ imgView: UIImageView, _ imageURL: String) {
         guard let objURL = URL(string: imageURL) else { return }
         let session = URLSession.shared
         let dataTask = session.dataTask(with: objURL) { (data, response, error) in
@@ -107,7 +126,48 @@ class HomeViewController: UIViewController {
         }
         dataTask.resume()
     }
+
+//    MARK: - Action Button Filter
+
+    @IBAction func filterTapped(_ sender: Any) {
+
+
+        let vc = storyboard?.instantiateViewController(withIdentifier: "PopoverFilterViewController")as! PopoverFilterViewController
+
+        vc.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        vc.delegateToGetCategory = self
+
+        let navController = UINavigationController(rootViewController: vc)
+        vc.navigationController?.isNavigationBarHidden = true
+        navController.modalPresentationStyle = UIModalPresentationStyle.popover
+
+        let popover = navController.popoverPresentationController
+        popover?.delegate = self as? UIPopoverPresentationControllerDelegate
+        popover?.barButtonItem = sender as? UIBarButtonItem
+
+
+        self.present(navController, animated: true, completion: nil)
+
+
+
+    }
+
+
+
+
 }
+//    MARK: - delegate to get category
+extension HomeViewController: getCategoryNewsDelegate {
+    func getCategory(_ category: String) {
+        //Load data from server
+        loadNewsDatabyTopic(category)
+        //loadNewsbySearching(with: "football")
+        setUpView()
+    }
+
+
+}
+
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsArray.count
