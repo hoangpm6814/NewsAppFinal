@@ -25,7 +25,8 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
     @IBOutlet weak var newsDescription: UILabel!
     @IBOutlet weak var newsContentTV: UITextView!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-
+    @IBOutlet weak var toolBar: UIToolbar!
+    
 
 
     var articleStringURL: String?
@@ -33,7 +34,9 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setUpView()
+        
         newsTitle.text = news?.title
         author.text = news?.author
         publishedAt.text = news?.publishedAt
@@ -59,7 +62,23 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
         view.addGestureRecognizer(tapRecognizer)
         view.addSubview(scrollView)
         customMenuSelectedText()
+        
     }
+    
+    func setUpView() {
+        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkmode))
+    }
+    
+    @objc func enableDarkmode() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let theme = isDarkMode ? Theme.dark : Theme.light
+        view.backgroundColor = theme.backgroundColor
+        newsContentTV.backgroundColor = theme.backgroundColor
+        newsContentTV.textColor = theme.textColor
+        navigationController?.navigationBar.barTintColor = theme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]
+    }
+
 
     func loadImage(_ imageURL: String) {
         guard let objURL = URL(string: imageURL) else { return }

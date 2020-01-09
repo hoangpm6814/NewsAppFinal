@@ -673,7 +673,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WSA-ck-8vF">
                                 <rect key="frame" x="20" y="544" width="374" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="1" green="0.97104603050000005" blue="0.9703614116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -717,6 +717,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJY-Mw-Zmh">
                                 <rect key="frame" x="0.0" y="759" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.97104603050000005" blue="0.9703614116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <barButtonItem title="save" image="bookmark" catalog="system" id="USe-WP-Lsx">
                                         <connections>
@@ -747,6 +748,7 @@
                         <outlet property="newsTitle" destination="bAZ-in-ogn" id="zW4-H2-y65"/>
                         <outlet property="publishedAt" destination="BgS-BX-1bw" id="XHd-u5-QTN"/>
                         <outlet property="shareButton" destination="EPL-0k-aGQ" id="edR-UI-fzR"/>
+                        <outlet property="toolBar" destination="QJY-Mw-Zmh" id="29b-PB-ddO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mr9-LD-uFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
