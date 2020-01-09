@@ -105,6 +105,12 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
     func openInSafari() {
         guard let articleString = articleStringURL, let url = URL(string: articleString) else { return }
         let svc = DFSafariViewController(url: url)
+        
+        //        let config = SFSafariViewController.Configuration()
+        //        config.entersReaderIfAvailable = true
+        //        let svc = DFSafariViewController(url: url, configuration: config)
+
+
         svc.delegate = self
         self.present(svc, animated: true, completion: nil)
     }
@@ -269,4 +275,14 @@ class NewsDetailViewController: UIViewController, UITextViewDelegate, UIGestureR
         present(alert, animated: true, completion: nil)
     }
 
+}
+extension NewsDetailViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
 }
