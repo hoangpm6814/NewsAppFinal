@@ -11,6 +11,7 @@ import Firebase
 
 class ActivityViewController: UIViewController {
 
+    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var tableView: UITableView!
     var newsArray: [News] = []
     var newsToSend: News?
@@ -27,7 +28,20 @@ class ActivityViewController: UIViewController {
         // Do any additional setup after loading the view.
         getSavedNews()
         getAllHighlightedContent()
-        
+        setUpView()
+    }
+    
+    func setUpView() {
+        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkmode))
+    }
+    
+    @objc func enableDarkmode() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let theme = isDarkMode ? Theme.dark : Theme.light
+        view.backgroundColor = theme.backgroundColor
+        tableView.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.barTintColor = theme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]
     }
     
     func getSavedNews() {
@@ -131,7 +145,7 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! newsCell
         let article = newsArray[indexPath.row]
         cell.textLabel?.text = article.title
         cell.detailTextLabel?.text = article.author

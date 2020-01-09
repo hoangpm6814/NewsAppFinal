@@ -23,8 +23,23 @@ class SearchViewController: UIViewController {
         searchTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         //loadNewsbySearching(with: "football")
         // Do any additional setup after loading the view.
+        setUpView()
     }
     
+    func setUpView() {
+        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkmode))
+    }
+    
+    @objc func enableDarkmode() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let theme = isDarkMode ? Theme.dark : Theme.light
+        view.backgroundColor = theme.backgroundColor
+        searchResultTable.backgroundColor = theme.backgroundColor
+        searchTF.backgroundColor = theme.backgroundColor
+        searchTF.textColor = theme.textColor
+        navigationController?.navigationBar.barTintColor = theme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]
+    }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         print("changed")
@@ -72,7 +87,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! newsCell
             let article = searchResultArr[indexPath.row]
             cell.textLabel?.text = article.title
             cell.detailTextLabel?.text = article.author
