@@ -12,6 +12,7 @@
 		60CEB66823BA3C660022C0B9 /* HighlightClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CEB66723BA3C660022C0B9 /* HighlightClass.swift */; };
 		60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */; };
 		60F6FBBD239FBEF600197539 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6FBBC239FBEF600197539 /* SearchViewController.swift */; };
+		9B37D51723C72E7E00D66053 /* DFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37D51623C72E7E00D66053 /* DFSafariViewController.swift */; };
 		9B4BC7D52390DC1B00E48B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D42390DC1B00E48B44 /* AppDelegate.swift */; };
 		9B4BC7D72390DC1B00E48B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D62390DC1B00E48B44 /* SceneDelegate.swift */; };
 		9B4BC7D92390DC1B00E48B44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BC7D82390DC1B00E48B44 /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		60CEB66723BA3C660022C0B9 /* HighlightClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightClass.swift; sourceTree = "<group>"; };
 		60D92A3223A9AB6D00EB9E6B /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		60F6FBBC239FBEF600197539 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9B37D51623C72E7E00D66053 /* DFSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFSafariViewController.swift; sourceTree = "<group>"; };
 		9B4BC7D12390DC1B00E48B44 /* News App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4BC7D42390DC1B00E48B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B4BC7D62390DC1B00E48B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B37D51523C72E5700D66053 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9B37D51623C72E7E00D66053 /* DFSafariViewController.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		9B4BC7C82390DC1A00E48B44 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 		9B4BC7D32390DC1B00E48B44 /* News App */ = {
 			isa = PBXGroup;
 			children = (
+				9B37D51523C72E5700D66053 /* Support */,
 				F3A30B2B23C5118700F71087 /* Theme */,
 				9B5C3399239B152200A4C83E /* Network */,
 				9B4BC7D82390DC1B00E48B44 /* ViewController.swift */,
@@ -225,7 +236,7 @@
 				9B4BC7CE2390DC1B00E48B44 /* Frameworks */,
 				9B4BC7CF2390DC1B00E48B44 /* Resources */,
 				06AB949F8E7B2C9695A3CA17 /* [CP] Embed Pods Frameworks */,
-				336797652A46ADC9888DEECA /* [CP] Copy Pods Resources */,
+				3DAF16BA1B369847D84ED278 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -361,7 +372,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-News App/Pods-News App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		336797652A46ADC9888DEECA /* [CP] Copy Pods Resources */ = {
+		3DAF16BA1B369847D84ED278 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,6 +430,7 @@
 				60D92A3323A9AB6D00EB9E6B /* ActivityViewController.swift in Sources */,
 				9BEAC367239A025E0052CCAC /* NewsAPIConfig.swift in Sources */,
 				9B5C339B239B42BB00A4C83E /* NewsClass.swift in Sources */,
+				9B37D51723C72E7E00D66053 /* DFSafariViewController.swift in Sources */,
 				F3A30B2F23C5126300F71087 /* ThemeManager.swift in Sources */,
 				60CEB66823BA3C660022C0B9 /* HighlightClass.swift in Sources */,
 				F3A30B2D23C511B000F71087 /* Theme.swift in Sources */,

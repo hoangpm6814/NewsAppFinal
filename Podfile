@@ -7,12 +7,13 @@ target 'News App' do
 
   # Pods for News App
 	# Minh Hoang added
-  pod 'FirebaseAnalytics'
-  pod 'FirebaseFirestore'
-  pod 'FirebaseCore'
-  pod 'FirebaseAuth'
-  pod 'FirebaseDatabase'
-  pod 'FirebaseStorage'
+
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
 
 	# Van Hiep added
@@ -23,8 +24,9 @@ target 'News App' do
 
 	#Thanh Hang added
   pod 'Firebase'
-  pod 'FirebaseMLNLTranslate'
+  pod 'Firebase/MLNLTranslate'
   pod 'IGColorPicker'
+  pod 'MaterialComponents/Tabs'
 	
 end
 
