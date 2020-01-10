@@ -62,6 +62,11 @@ class HomeViewController: UIViewController {
     }
 
     func loadNewsData(_ source: String) {
+
+//      MARK: - Spinner while wating
+        setupSpinner()
+        spinningActivityIndicator.start()
+
         NewsAPIConfig.getNewsItems(source: source)
             .done { result in
                 //print(result)
@@ -74,12 +79,15 @@ class HomeViewController: UIViewController {
 
             }
             .ensure(on: .main) {
-
+                self.spinningActivityIndicator.stop()
             }.catch(on: .main) {
                 err in print(err.localizedDescription) }
     }
 
     func loadNewsDatabyTopic(_ category: String) {
+        //      MARK: - Spinner while wating
+        setupSpinner()
+        spinningActivityIndicator.start()
         NewsAPIConfig.getNewsItemsbyTopic(category: category)
             .done { result in
                 //print(result)
@@ -96,18 +104,21 @@ class HomeViewController: UIViewController {
 
             }
             .ensure(on: .main) {
-
+                self.spinningActivityIndicator.stop()
             }.catch(on: .main) {
                 err in print(err.localizedDescription) }
     }
 
     func loadNewsbyTopic(_ params: SourcesRequestParameters) {
+        //      MARK: - Spinner while wating
+        setupSpinner()
+        spinningActivityIndicator.start()
         NewsAPIConfig.getNewsSource(sourceRequestParams: params)
             .done { result in
 
             }
             .ensure(on: .main) {
-
+                self.spinningActivityIndicator.stop()
             }.catch(on: .main) {
                 err in print(err.localizedDescription)
         }
@@ -152,7 +163,13 @@ class HomeViewController: UIViewController {
 
     }
 
+//    MARK: - Spinner Setting
+    let spinningActivityIndicator = TSSpinnerView()
+//    MARK: - Setup Spinner
 
+    func setupSpinner() {
+        spinningActivityIndicator.setupTSSpinnerView()
+    }
 
 
 }

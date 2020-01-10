@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func LoginButton(_ sender: Any) {
+        setupSpinner()
+        spinningActivityIndicator.start()
         let email = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 
@@ -36,10 +38,19 @@ class LoginViewController: UIViewController {
                 self.errorLbl.alpha = 1
             }
             else {
+                self.spinningActivityIndicator.stop()
                 let tabBarController: UITabBarController = (self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController)
                 self.navigationController?.pushViewController(tabBarController, animated: true)
+                self.navigationController?.isNavigationBarHidden = true
             }
         }
+    }
+    //    MARK: - Spinner Setting
+    let spinningActivityIndicator = TSSpinnerView()
+    //    MARK: - Setup Spinner
+
+    func setupSpinner() {
+        spinningActivityIndicator.setupTSSpinnerView()
     }
 
 }

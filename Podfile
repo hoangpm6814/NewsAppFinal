@@ -19,7 +19,8 @@ target 'News App' do
 	# Van Hiep added
 
   pod "PromiseKit", "~> 6.8"
-
+  pod 'lottie-ios'
+  pod 'R.swift'
 
 
 	#Thanh Hang added
