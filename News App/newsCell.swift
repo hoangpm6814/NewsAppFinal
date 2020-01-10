@@ -19,7 +19,7 @@ class newsCell: UITableViewCell {
     @objc func enableDarkmode() {
         let theme = ThemeManager.currentTheme
         backgroundColor = theme.backgroundColor
-        textLabel?.textColor = theme.textColor
+        titleLabel?.textColor = theme.textColor
     }
     
     override func awakeFromNib() {

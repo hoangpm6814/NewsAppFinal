@@ -1129,7 +1129,6 @@
         <image name="textformat.size" catalog="system" width="64" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nwc-YT-ZC2"/>
         <segue reference="hNm-rb-xGs"/>
         <segue reference="fnX-MU-cBy"/>
         <segue reference="hEX-0S-KHN"/>
